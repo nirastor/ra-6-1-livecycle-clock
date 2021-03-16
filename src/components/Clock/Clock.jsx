@@ -5,9 +5,8 @@ import Visual12hClock from '../Visual12hClock/Visual12hClock';
 import './Clock.css';
 
 export default class Clock extends React.Component {
-  constructor(props) {
+  constructor() {
     super();
-    this.timezone = props.clock.timezone;
     this.timer = null;
     this.state = {
       time: (new Date()),
