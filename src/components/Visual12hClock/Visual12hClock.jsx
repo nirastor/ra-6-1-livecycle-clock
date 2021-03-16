@@ -7,16 +7,16 @@ export default function Visual12hClock({ hh, mm, ss }) {
   const minuteRotate = (mm + ss / 60) * 6;
   const hourRotate = (hh + mm / 60) * 30;
 
-  const handStyle = (rotate) => ({
+  const getClockHandRotation = (rotate) => ({
     transform: `rotate(${rotate}deg)`,
   });
 
   return (
     <div className="clock">
       <div className="wrap">
-        <span className="hour" style={handStyle(hourRotate)} />
-        <span className="minute" style={handStyle(minuteRotate)} />
-        <span className="second" style={handStyle(secondRotate)} />
+        <span className="hour" style={getClockHandRotation(hourRotate)} />
+        <span className="minute" style={getClockHandRotation(minuteRotate)} />
+        <span className="second" style={getClockHandRotation(secondRotate)} />
         <span className="dot" />
       </div>
     </div>

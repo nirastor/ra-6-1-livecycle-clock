@@ -7,10 +7,7 @@ import './Clock.css';
 export default class Clock extends React.Component {
   constructor(props) {
     super();
-    this.id = props.clock.id;
-    this.city = props.clock.city;
     this.timezone = props.clock.timezone;
-    this.removeClock = props.removeClock;
     this.timer = null;
     this.state = {
       time: (new Date()),
@@ -30,15 +27,18 @@ export default class Clock extends React.Component {
 
   render() {
     const { time } = this.state;
+    const { clock } = this.props;
+    const { city, timezone } = clock;
+    const { removeClock } = this.props;
     return (
       <>
         <div className="clock-city-plate">
-          {this.city}
-          <button className="clock-delete-button" type="button" onClick={this.removeClock}>&times;</button>
+          { city }
+          <button className="clock-delete-button" type="button" onClick={removeClock}>&times;</button>
         </div>
         <div>
           <Visual12hClock
-            hh={time.getUTCHours() + parseInt(this.timezone, 10)}
+            hh={time.getUTCHours() + parseInt(timezone, 10)}
             mm={time.getUTCMinutes()}
             ss={time.getUTCSeconds()}
           />
